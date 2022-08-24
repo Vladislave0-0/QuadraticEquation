@@ -41,7 +41,7 @@ int QuadraticSolver(double a, double b, double c, double* x1, double* x2)
         if (D < 0)
             return NoRoots;
 
-        else if (D == 0) 
+        else if (FloatComparison(D, 0)) 
         {
             *x1 = -b / (2*a);
             return OneRoot;
@@ -49,11 +49,11 @@ int QuadraticSolver(double a, double b, double c, double* x1, double* x2)
 
         else
         {
-            if (c == 0)
+            if (FloatComparison(c, 0))
             {
                 *x1 = 0;
                 *x2  = -b / a;
-                if (FloatComparison(*x1, *x2) == 1)
+                if (FloatComparison(*x1, *x2))
                     return OneRoot;
                 else
                     return TwoRoots;
