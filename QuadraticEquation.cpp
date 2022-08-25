@@ -1,34 +1,37 @@
-#include <stdio.h>
-#include <math.h>
-#include <stdlib.h>
+#include "QuadraticEquation.h"
 
-const double FloatConstant = 10E-6;
-
-enum Roots
+int InputProcessing(double* a, double* b, double* c)                                //Обработка ввода
 {
-    NoRoots         = 0,
-    OneRoot         = 1,
-    TwoRoots        = 2, 
-    InfinitiveRoots = 3,
-};
+    assert(a != NULL);
+    assert(b != NULL);
+    assert(c != NULL);
 
-int FloatComparison(double x1, double x2)
-{
-    return fabs(x1 - x2) <= FloatConstant; 
+    printf("Enter the coefficients of the quadratic equation: ");
+
+    while (scanf("%lf%lf%lf", a, b, c) != 3)  
+    {
+        ClearInputBuffer();
+        printf("You did something wrong. "
+               "Enter the coefficients of the quadratic equation one more time: ");
+    }
+    return 0;
 }
 
-int LinearSolver(double b, double c, double* x1)
+int LinearSolver(double b, double c, double* x1)                                    //Решение линейного уравнения           
 {
     if (b == 0)
         return (c == 0) ? InfinitiveRoots : NoRoots;
     else 
     {
         *x1 = -c / b;
+        if (c == 0)
+            *x1 = 0;
+            return OneRoot;
         return OneRoot;
     }
 }
 
-int QuadraticSolver(double a, double b, double c, double* x1, double* x2) 
+int QuadraticSolver(double a, double b, double c, double* x1, double* x2)           //Решение квадратного уравнения
 {
     if (a == 0)
     {
@@ -41,19 +44,25 @@ int QuadraticSolver(double a, double b, double c, double* x1, double* x2)
         if (D < 0)
             return NoRoots;
 
-        else if (FloatComparison(D, 0)) 
+        else if (D == 0) 
         {
             *x1 = -b / (2*a);
+            if (b == 0)
+                *x1 = 0;
+                return OneRoot;
             return OneRoot;
         }
 
         else
         {
-            if (FloatComparison(c, 0))
+            if (c == 0)
             {
                 *x1 = 0;
                 *x2  = -b / a;
-                if (FloatComparison(*x1, *x2))
+                if (b == 0)
+                    *x1 = 0;
+                    return OneRoot;
+                if (FloatComparison(*x1, *x2) == 1)
                     return OneRoot;
                 else
                     return TwoRoots;
@@ -72,7 +81,7 @@ int QuadraticSolver(double a, double b, double c, double* x1, double* x2)
     return 0;
 }
 
-void SolutionsProcessing(double* x1, double* x2, int solver)
+void SolutionsProcessing(double* x1, double* x2, int solver)                        //Обработка полученных корней
 {
     switch(solver)
     {
@@ -89,27 +98,4 @@ void SolutionsProcessing(double* x1, double* x2, int solver)
         }
         default: printf("You did something wrong.\n"); break;
     }
-}
-
-void ClearInputBuffer()
-{
-    while (getchar() != '\n') {};
-}
-
-int main() 
-{
-    double a = NAN, b = NAN, c = NAN, x1 = NAN, x2 = NAN;
-
-    printf("Enter the coefficients of the quadratic equation: ");
-
-    while (scanf("%lf%lf%lf", &a, &b, &c) != 3)  
-    {
-        ClearInputBuffer();
-        printf("You did something wrong"
-               "Enter the coefficients of the quadratic equation: ");
-    }
-
-    int solver = QuadraticSolver(a, b, c, &x1, &x2);
-
-    SolutionsProcessing(&x1, &x2, solver);
 }
