@@ -8,6 +8,7 @@ const int N_TESTS = 8;
 
 void TestingSolutions()
 {
+    printf("\n");
     struct UnitTest
     {
         double a_s;
