@@ -1,13 +1,23 @@
 #include "common.h"
 
+//===========================================================================
+
 const double FloatConstant = 1E-6;
 
-int FloatComparison(double x1, double x2)
+//===========================================================================
+
+int FloatComparison(const double x1, const double x2)
 {
-    return (fabs((x1) - (x2)) <= FloatConstant);
+    if (fabs(x1 - x2) <= FloatConstant)
+        return Equal;
+    else 
+        return ((x1-x2) > FloatConstant) ? Over : Under;
 }
+
+//===========================================================================
 
 void ClearInputBuffer()
 {
-    while (getchar() != '\n') {};
+    while (getchar() != '\n') 
+        ;
 }
