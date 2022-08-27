@@ -8,7 +8,6 @@
 //=====================================================================================
 /**
  * @brief TestingSolutions - performs unit testing of the program.
- * 
  */
 void TestingSolutions();
 

@@ -2,8 +2,6 @@
 #include "QuadraticEquation.h"
 #include "common.h"
 
-const int N_TESTS = 8;
-
 //=============================================================================================================================
 
 void TestingSolutions()
@@ -19,7 +17,7 @@ void TestingSolutions()
         double x2_s;
     };
 
-    struct UnitTest QuadraticEq[N_TESTS] =
+    struct UnitTest QuadraticEq[] =
         {
             {0,  0,  0, 3,        NAN,        NAN},
             {2,  0,  0, 1,          0,        NAN},
@@ -28,9 +26,9 @@ void TestingSolutions()
             {0, 14,  0, 1,          0,        NAN},
             {5,  0, -1, 2,  -0.447214,   0.447214},
             {7,  0,  8, 0,        NAN,        NAN},
-            {16, 7, -8, 2,  -0.958919,  0.521419}};
+            {16, 7, -8, 2,  -0.958919,   0.521419}};
 
-    for (int i = 0; i < N_TESTS; i++)
+    for (int i = 0; i < sizeof(QuadraticEq) / sizeof(QuadraticEq[0]); i++)
     {
         double a_s       = QuadraticEq[i].a_s;
         double b_s       = QuadraticEq[i].b_s;
@@ -43,7 +41,7 @@ void TestingSolutions()
 
         int RootNumber = QuadraticSolver(a_s, b_s, c_s, &x1, &x2);
         
-        if (N_TESTS != 8)
+        if (sizeof(QuadraticEq) / sizeof(QuadraticEq[0]) != 8)
             printf("UnitTest failed. The number of test is incorrect.\n");
         else
         {
