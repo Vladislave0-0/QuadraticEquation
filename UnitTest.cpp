@@ -4,18 +4,21 @@
 
 //=============================================================================================================================
 
+        struct UnitTest
+        {
+            double a_s;
+            double b_s;
+            double c_s;
+            int RootNumber_s;
+            double x1_s;
+            double x2_s;
+        };
+
+//=============================================================================================================================
+
 void TestingSolutions()
 {
     printf("\n");
-    struct UnitTest
-    {
-        double a_s;
-        double b_s;
-        double c_s;
-        int RootNumber_s;
-        double x1_s;
-        double x2_s;
-    };
 
     struct UnitTest QuadraticEq[] =
         {

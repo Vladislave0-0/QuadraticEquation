@@ -22,8 +22,7 @@ enum ComparisonResult
 
 //=====================================================================================
 /**
- * @brief FloatComparison - takes 2 root of the quadratic equation. 
- *        Compares variables with type float.
+ * @brief FloatComparison - сompares variables with type float.
  * 
  * @param x1 First root of the quadratic equation.
  * @param x2 Second root of the quadratic equation.
@@ -34,8 +33,7 @@ int FloatComparison(const double x1, const double x2);
 
 //=====================================================================================
 /**
- * @brief ClearInputBuffer - сalled in a function InputCoeff to erase the input when the 
- *        user entered something wrong.
+ * @brief ClearInputBuffer -  erase the input when the user entered something wrong.
  */
 void ClearInputBuffer();
 
