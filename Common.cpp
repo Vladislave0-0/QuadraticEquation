@@ -31,7 +31,6 @@ int Swap(double* x1, double* x2)
 
     if (FloatComparison(*x1, *x2) == UNDER)
         return TwoRoots;
-
     else
     {
         *x1 = *x2;

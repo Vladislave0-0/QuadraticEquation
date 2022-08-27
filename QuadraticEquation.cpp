@@ -67,7 +67,6 @@ int SolveLinear(const double b, const double c, double* x1)
 {
     if (FloatComparison(b, 0) == EQUAL)
         return (FloatComparison(c, 0) == EQUAL) ? InfinitiveRoots : NoRoots;
-
     else 
     {
         *x1 = -c / b;

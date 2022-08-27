@@ -47,13 +47,11 @@ void TestingSolutions()
         double x1 = NAN, x2 = NAN;
 
         int RootNumber = SolveQuadratic(a_s, b_s, c_s, &x1, &x2);
-        
-        if (size != 8)
-            printf("UnitTest failed. The number of test is incorrect.\n");
 
-        else
-        {
-            if (RootNumber == RootNumber_s)
+        if (RootNumber != RootNumber_s)
+            printf("Test %d failed. The number of roots is %d. Expected %d.\n\n", i, RootNumber, RootNumber_s);
+
+        else 
             {
                 if (isnanl(x1) && isnanl(x1_s))
                 {
@@ -101,9 +99,5 @@ void TestingSolutions()
                     }
                 }
             }
-
-            else 
-                printf("Test %d failed. The number of roots is %d. Expected %d.\n\n", i, RootNumber, RootNumber_s);
-        }
     }
 }
